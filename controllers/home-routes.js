@@ -4,7 +4,7 @@ const { User, Post } = require('../models');
 const withAuth = require('../utils/auth');
 
 
-// GET route for homepage
+// GET route for homepage (this)
 router.get('/', async (req, res) => {
     try {
       const dbPostData = await Post.findAll({
@@ -19,5 +19,10 @@ router.get('/', async (req, res) => {
       console.log(err);
       res.status(500).json(err);
     }
+  });
+  
+ // signup GET route
+router.get('/signup', (req, res) => {
+    res.render('signup', { loggedIn: req.session.loggedIn });
   });
   
