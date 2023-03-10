@@ -55,3 +55,19 @@ router.get('/post/:id', async (req, res) => {
     }
 });
 
+// GET for adding/deleting/editing posts
+// withAuth middleware preventing route access unless logged in 
+router.get('/dashboard/new', withAuth, (req, res) => { 
+    res.render('new', { loggedIn: req.session.loggedIn });
+  });
+
+  router.get('/dashboard/post/:id', withAuth, async (req, res) => {
+    try {
+      const blogData = await Post.findByPk(req.params.id, {});
+      const post = blogData.get({ plain: true });
+      res.render('editpost', { post, loggedIn: req.session.loggedIn });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  });
