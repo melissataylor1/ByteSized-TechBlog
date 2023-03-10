@@ -27,7 +27,7 @@ router.get('/', async (req, res) => {
         const posts = blogData.map((post) => post.get({ plain: true }));
         res.render('home', { 
             posts, 
-            logged_in: req.session.logged_in 
+            loggedIn: req.session.loggedIn 
         });
     } catch (err) {
         console.log(err);
