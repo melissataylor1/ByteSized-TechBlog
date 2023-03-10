@@ -25,7 +25,7 @@ router.get('/', async (req, res) => {
           });
         // passes blog data and login sessions into homepage
         const posts = blogData.map((post) => post.get({ plain: true }));
-        res.render('homepage', { 
+        res.render('home', { 
             posts, 
             logged_in: req.session.logged_in 
         });
@@ -35,6 +35,26 @@ router.get('/', async (req, res) => {
       }
     });
 
+    // GET for panel page
+router.get('/panel', withAuth, async (req, res) => { // withAuth: only if user is logged in, the callback function is executed
+    try {
+      const blogData = await Post.findAll({
+        include: [{
+          model: User,
+          attributes: ['username'],
+        }],
+        where: {
+          user_id: req.session.user_id,
+        },
+      });
+      const posts = blogData.map((post) => post.get({ plain: true }));
+      res.render('panel', { posts, loggedIn: req.session.loggedIn });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  });
+  
 // GET singular post
 router.get('/post/:id', async (req, res) => {
     try {
@@ -57,17 +77,19 @@ router.get('/post/:id', async (req, res) => {
 
 // GET for adding/deleting/editing posts
 // withAuth middleware preventing route access unless logged in 
-router.get('/dashboard/new', withAuth, (req, res) => { 
+router.get('/panel/new', withAuth, (req, res) => { 
     res.render('new', { loggedIn: req.session.loggedIn });
   });
 
-  router.get('/dashboard/post/:id', withAuth, async (req, res) => {
+  router.get('/panel/post/:id', withAuth, async (req, res) => {
     try {
       const blogData = await Post.findByPk(req.params.id, {});
       const post = blogData.get({ plain: true });
-      res.render('editpost', { post, loggedIn: req.session.loggedIn });
+      res.render('edit', { post, loggedIn: req.session.loggedIn });
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
     }
   });
+
+  module.exports = router;
