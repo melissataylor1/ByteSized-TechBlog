@@ -26,3 +26,8 @@ router.get('/signup', (req, res) => {
     res.render('signup', { loggedIn: req.session.loggedIn });
   });
   
+// loin GET route
+router.get('/login', (req, res) => {
+    res.render('login', { loggedIn: req.session.loggedIn });
+  });
+  
