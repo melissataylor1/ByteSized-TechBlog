@@ -33,3 +33,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
+
+//sql connect
+sequelize.sync({ force: false }).then(() => {
+    app.listen(PORT, () => console.log('ALL GOOD Now listening'));
+  });
