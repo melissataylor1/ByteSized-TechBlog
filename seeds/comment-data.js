@@ -1,5 +1,6 @@
+//comment model import from the models folder
 const { Comment } = require('../models');
-
+//array of comment data
 const commentdata = [
   {
     content: 'Comment 1',
