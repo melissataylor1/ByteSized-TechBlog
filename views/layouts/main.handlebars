@@ -5,12 +5,21 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Byte Sized</title>
+  <h2>A tech blog.</h2>
   <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 
 <body>
   <nav>
-
+    <a href="/">Home</a>
+    <a href="/dashboard">Dashboard</a>
+    {{#if loggedIn}}
+    {{!-- When loggedin, show Logout button --}}
+    <button id="logout" class="logout-btn">Logout</button> 
+    {{else}}
+    {{!-- When loggedout, show Login button --}}
+    <a href="/login">Login</a>
+    {{/if}}
   </nav>
 
   <header>
@@ -24,7 +33,7 @@
   </main>
   
   {{#if loggedIn}}
-  {{!-- When loggedin, Logout button is activated --}}
+  {{!-- When loggedin, show logout button --}}
   <script src="/js/logout.js"></script>
   {{/if}}
 </body>
