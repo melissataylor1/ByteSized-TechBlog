@@ -17,9 +17,9 @@ const updatepostFormHandler = async (event) => {
       });
   
       if (response.ok) {
-        document.location.replace('/dashboard'); // When successful, load the dashboard page
+        document.location.replace('/dashboard'); 
       } else {
-        alert('Failed to update a post.'); // When unsuccessful, show alert
+        alert('Failed to update a post.'); 
       }
     }
   };
