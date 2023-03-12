@@ -12,7 +12,11 @@ const newpostFormHandler = async (event) => {
         headers: { 'Content-Type': 'application/json' },
       });
   
-     
+      if (response.ok) {
+        document.location.replace('/dashboard'); // When successful, load the dashboard page
+      } else {
+        alert('Failed to create a new post.'); // When unsuccessful, show alert
+      }
     }
   };
   // Event listeners

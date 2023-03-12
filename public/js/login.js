@@ -11,6 +11,15 @@ const loginFormHandler = async (event) => {
         body: JSON.stringify({ username, password }),
         headers: { 'Content-Type': 'application/json' },
       });
+  
+      if (response.ok) {
+        document.location.replace('/'); // When successful, load the homepage
+      } else {
+        alert('Failed to log in.'); // When unsuccessful, show alert
+      }
+    }
+  };
+  
 // Event listener
 document
   .querySelector('.login-form')

@@ -4,6 +4,14 @@ const logout = async () => {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
     });
+  
+    if (response.ok) {
+      document.location.replace('/'); // When successful, load the homepage
+    } else {
+      alert('Failed to log out.'); // When unsuccessful, show alert
+    }
+  };
+  
 // Event listeners
 document
   .querySelector('#logout')
