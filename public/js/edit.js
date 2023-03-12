@@ -23,3 +23,15 @@ const updatepostFormHandler = async (event) => {
       }
     }
   };
+
+  // deletes post
+const deletepostFormHandler = async (event) => {
+    event.preventDefault();
+  
+    const response = await fetch(`/api/post/${post_id}`, {
+      method: 'DELETE',
+    });
+  
+
+  };
+  
