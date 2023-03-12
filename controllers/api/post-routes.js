@@ -50,7 +50,7 @@ router.delete('/:id', withAuth, async (req, res) => {
         });
 
         if (!blogData) {
-            res.status(404).json({ message: 'OOPS! No BLog here' });
+            res.status(404).json({ message: 'Blog Not Found' });
             return;
         }
 
@@ -59,3 +59,5 @@ router.delete('/:id', withAuth, async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+module.exports = router;
