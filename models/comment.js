@@ -2,7 +2,9 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 
-
+//initializes a Comment model with Sequelize. 
+//Dfines columns of Comment table, incl. id column = integer, not nullable, and auto-incrementing.
+//Als0 content and post_id columns which are strings and integers respectively.
 Comment.init(
     {
       id: {
