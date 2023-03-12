@@ -31,7 +31,11 @@ const deletepostFormHandler = async (event) => {
     const response = await fetch(`/api/post/${post_id}`, {
       method: 'DELETE',
     });
-  
-
+  //if else for delete request. if ok then returns post panel page
+    if (response.ok) {
+        document.location.replace('/dashboard'); 
+      } else {
+        alert('couldnt delete post'); 
+      }
   };
   
