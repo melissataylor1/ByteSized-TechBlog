@@ -31,4 +31,21 @@ class User extends Model {
         },
       },
     },
+
+    //columns in user table
+    {
+      hooks: {
+        async beforeCreate(newUserData) { // Use bcrypt to encrypt passwords before storing them in the database
+          newUserData.password = await bcrypt.hash(newUserData.password, 10);
+          return newUserData;
+        },
+      },
+      sequelize,
+      timestamps: false,
+      freezeTableName: true,
+      underscored: true,
+      modelName: 'user',
+    },
   )
+
+  module.exports = User;
