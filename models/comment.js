@@ -3,6 +3,9 @@ const sequelize = require('../config/connection');
 
 
 //initializes a Comment model with Sequelize. 
+
+
+class Comment extends Model {}
 //Dfines columns of Comment table, incl. id column = integer, not nullable, and auto-incrementing.
 //Als0 content and post_id columns which are strings and integers respectively.
 Comment.init(
@@ -32,4 +35,14 @@ Comment.init(
         },
       },
     },
+    //timestamps for sql comment model
+    {
+        sequelize,
+        timestamps: true, 
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'comment',
+      }
 );
+
+module.exports = Comment;
