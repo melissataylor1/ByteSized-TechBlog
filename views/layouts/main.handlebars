@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Byte Sized</title>
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+
+<body>
+  <nav>
+
+  </nav>
+
+  <header>
+    <h1>The Tech Blog</h1>
+  </header>
+  
+  <main>
+    <div class="main">
+      {{{body}}}
+    </div>
+  </main>
+  
+  {{#if loggedIn}}
+  {{!-- When loggedin, Logout button is activated --}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
+</body>
+</html>
