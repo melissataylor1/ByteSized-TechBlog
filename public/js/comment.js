@@ -15,8 +15,13 @@ const newcommentFormHandler = async (event) => {
         body: JSON.stringify({ content, post_id }),
         headers: { 'Content-Type': 'application/json' },
       });
-  
-
+  //if else for comment
+      if (response.ok) {
+        document.location.reload(); 
+      } else {
+        alert('Couldnt leave comment. Try again.'); 
+      }
+    }
   }; 
   
 //event listeners
