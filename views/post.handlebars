@@ -1,0 +1,28 @@
+<section>
+  <div class="card">
+    <h2 class="card-title">{{post.title}}</h2>
+    <h3 class="card-content">{{post.content}}</h3>
+    <p class="card-info">By {{post.user.username}} on {{format_date post.createdAt}}</p>
+  </div>
+</section>
+<section>
+  {{#each post.comments as |comment|}}
+  {{> comment-details}}
+  {{/each}}
+</section>
+{{#if loggedIn}}
+<div class="add-comment">
+  <h2 class="add-comment-title">Add a comment</h2>
+  <form class="form newcomment-form">
+    <div class="form-group">
+      <label for="content-newcomment"></label>
+      <input class="form-input" type="text" id="content-newcomment" />
+    </div>
+    <div class="form-group">
+      <button class="btn-submit" type="submit">Submit</button>
+    </div>
+  </form>
+</div>
+<script src="../js/comment.js"></script>
+{{/if}}
+</section>
