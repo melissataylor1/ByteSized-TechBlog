@@ -78,4 +78,38 @@
     padding: 5px;
   }
   
+/*post buttons*/
+  
+.new-post {
+    background-color: #9f3e4d;
+    color: #fdfcf6;
+    margin: 15px;
+    text-align: center;
+    border: solid #290320;
+  }
+ 
+  .btn-new-post {
+    background-color: #290320;
+    padding: 10px;
+    font-size: 20px;
+  }
+  
+  .btn-new-post a {
+    color:  #fdfcf6;
+  }
 
+#content-newcomment, #title-newpost, #content-newpost, #title-updatepost, #content-updatepost {
+    padding: 2px;
+    margin: 5px;
+    width: 90%;
+  }
+  
+  .btn-submit {
+    margin: 5px;
+    font-size: 14px;
+  }
+  
+  .new-post-btn-section {
+    text-align: center;
+  }
+ 
