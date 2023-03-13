@@ -16,6 +16,7 @@ app.use(routes);
 // sync sequelize models to the database, then turn on the server
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}!`);
+  sequelize.sync({force:false});
 });
 // declare handlebars as the view engine
 app.engine('handlebars', hbs.engine);
