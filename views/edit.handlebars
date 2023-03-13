@@ -1,0 +1,22 @@
+<div class="new-post">
+  <form class="form updatepost-form">
+    <div class="form-group">
+      <label for="title-updatepost">Title</label><br/>
+      <input class="form-input" type="text" id="title-updatepost" value="{{post.title}}" />
+    </div>
+    <div class="form-group">
+      <label for="content-updatepost">Content</label><br/>
+      <input class="form-input" type="text" id="content-updatepost" value="{{post.content}}" />
+    </div>
+    <div class="form-group">
+      <button class="btn-submit" type="submit">Edit</button>
+    </div>
+  </form>
+  <form class="form deletepost-form">
+    <div class="form-group">
+      <button class="btn-submit" type="submit">Delete</button>
+    </div>
+  </form>
+</div>
+
+<script src="../../js/edit.js"></script>
