@@ -1,32 +1,60 @@
+/*BIG STUFF*/
+* {
+    font-family: Arial;
+    margin: 0%;
+  }
+.main-section {
+    background-color: #fdfcf6;
+    font-family: 'Courier New', Courier, monospace;
+    width: 100%;
+    align-items: center;
+  }
+
+  nav {
+    margin: 0%;
+    padding: 10px;
+    background-color: #9f3e4d;
+   
+  }
+  
+  nav a {
+    color: #fdfcf6;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 15px;
+   
+    text-align: center;
+  }
+  
+  nav a:hover {
+    color: #fa80ab;
+    background-color: #290320;
+  }
+  
+  header {
+    padding: 10px;
+    text-align: center;
+    background: #290320;
+    color: #fdfcf6;
+  }
+  
 /*Partials CSS */ 
 .card {
-    margin: 20px;
-    border: 2px solid var(--primary);
-    background-color: var(--light);
-    color: var(--primary);
+    background-color: #fdfcf6;
+    color: #290320;
     position: relative;
-  }
+    margin: 15px;
+    border: 3px solid #290320;
   
-  .card-title {
-    background-color: var(--primary);
-    color: var(--light);
-    padding: 5px;
   }
-  
-  .card-comment-title {
-    background-color: var(--tertiary);
-    color: var(--light);
-    padding: 5px;
-  }
-  
   .card-content {
-    color: var(--primary);
+    color: #290320;
     padding: 5px;
   }
   
   .card-info {
     text-align: right;
-    color: var(--tertiary);
+    color: #9f3e4d;
     padding: 5px;
   }
   
@@ -37,3 +65,17 @@
     width:100%;
     height:100%;
   }
+
+  .card-title {
+    background-color: #290320;
+    color: #fdfcf6;
+    padding: 5px;
+  }
+  
+  .card-comment-title {
+    background-color: #9f3e4d;
+    color: #fdfcf6;
+    padding: 5px;
+  }
+  
+
