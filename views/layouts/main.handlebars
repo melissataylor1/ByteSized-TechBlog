@@ -12,12 +12,12 @@
 <body>
   <nav>
     <a href="/">Home</a>
-    <a href="/dashboard">Dashboard</a>
+    <a href="/panel">Posts</a>
     {{#if loggedIn}}
-    {{!-- When loggedin, show Logout button --}}
+
     <button id="logout" class="logout-btn">Logout</button> 
     {{else}}
-    {{!-- When loggedout, show Login button --}}
+
     <a href="/login">Login</a>
     {{/if}}
   </nav>
@@ -27,7 +27,7 @@
   </header>
   
   <main>
-    <div class="main">
+    <div class="main-section">
       {{{body}}}
     </div>
   </main>
