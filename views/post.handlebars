@@ -7,7 +7,7 @@
 </section>
 <section>
   {{#each post.comments as |comment|}}
-  {{> comment-details}}
+  {{> comment}}
   {{/each}}
 </section>
 {{#if loggedIn}}
@@ -23,6 +23,6 @@
     </div>
   </form>
 </div>
-<script src="../js/comment.js"></script>
+<script src="../public/js/comment.js"></script>
 {{/if}}
 </section>
