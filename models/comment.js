@@ -1,48 +1,51 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-
-//initializes a Comment model with Sequelize. 
-
-
 class Comment extends Model {}
-//Dfines columns of Comment table, incl. id column = integer, not nullable, and auto-incrementing.
-//Als0 content and post_id columns which are strings and integers respectively.
+
 Comment.init(
     {
-      id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        primaryKey: true,
-        autoIncrement: true,
-      },
-      content: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      post_id: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: 'post',
-          key: 'id',
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            allowNull: false,
+            autoIncrement: true
         },
-      },
-      user_id: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: 'user',
-          key: 'id',
+        comment_text: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [1]
+            }
         },
-      },
+        created_at: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: DataTypes.NOW,
+        },
+        user_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'user',
+                key: 'id'
+            }
+        },
+        post_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'post',
+                key: 'id'
+            }
+        }
     },
-    //timestamps for sql comment model
     {
         sequelize,
-        timestamps: true, 
         freezeTableName: true,
         underscored: true,
-        modelName: 'comment',
-      }
+        modelName: 'comment'
+    }
 );
 
 module.exports = Comment;
