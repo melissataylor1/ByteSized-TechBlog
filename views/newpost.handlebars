@@ -1,18 +1,17 @@
-<div class="new-post">
-  <h2 class="add-comment-title">Create a new post</h2>
-  <form class="form newpost-form">
-    <div class="form-group">
-      <label for="title-newpost">Title</label><br/>
-      <input class="form-input" type="text" id="title-newpost" />
-    </div>
-    <div class="form-group">
-      <label for="content-newpost">Content</label><br/>
-      <input class="form-input" type="text" id="content-newpost" />
-    </div>
-    <div class="form-group">
-      <button class="btn-submit" type="submit">Create</button>
-    </div>
-  </form>
-</div>
+<section>
+  <h2>Create New Post</h2>
 
-<script src="../public/js/new-post.js"></script>
+  <form class="new-post-form">
+    <div>
+      <label for="post-title">Title</label>
+      <input type="text" id="post-title" size="60" name="post-title" />
+    </div>
+    <div>
+      <label for="post-text">Content</label>
+      <textarea name="post-text"></textarea>
+    </div>
+    <button type="submit" class="btn">Create Post</button>
+  </form>
+</section>
+
+<script src="/js/addPost.js"></script>

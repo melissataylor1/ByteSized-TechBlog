@@ -1,154 +1,34 @@
-/*BIG STUFF*/
-* {
-    font-family: Arial;
-    margin: 0%;
-  }
-.main-section {
-    background-color: #fdfcf6;
-    font-family: 'Courier New', Courier, monospace;
-    width: 100%;
+@import url('https://fonts.googleapis.com/css2?family=Sono:wght@400;500;700;800&display=swap');
+*{
+    font-family: 'Sono', sans-serif;
+}
+header {
+    border-bottom: 3px solid #1d2c00;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-  }
-  header {
+    background-color: #004119;
+    color: #ebe6c9;
+    padding: 15px;
+    flex-wrap: wrap;
+}
+
+.homepage {
+    color: #ebe6c9;
+}
+
+.container {
+    width: 35%;
+    border: 3px solid #271d0e;
+    border-radius: 25px;
     padding: 10px;
-    text-align: center;
-    background: #290320;
-    color: #fdfcf6;
-  }
-
-  nav {
-    margin: 0%;
-    padding: 9px;
-    background-color: #9f3e4d;
-   
-  }
-  
-  nav a {
-    color: #fdfcf6;
-    font-size: 20px;
-    font-weight: bold;
-    padding: 10px 15px;
-   
-    text-align: center;
-  }
-  
-  nav a:hover {
-    color: #fa80ab;
-    background-color: #290320;
-  }
-  
-
-  .logout-btn {
-    background: none;
-    border: none;
-    padding: 14px 20px;
-    cursor: pointer;
-    color: #fdfcf6;
-    font-size: 20px;
-    transition: color 0.1s;
-    font-weight: bold;
-    text-align: center;
-  }
-  
-  .logout-btn:hover {
-    color: #fa80ab;
-    background-color: #290320;
-  }
-  .form-group {
-    margin: 10px;
-  }
-  
-  .login-signup {
     margin: 20px;
-    text-align: center;
-    border: solid #290320;
-    background-color: grey;
-    color: #fdfcf6;
-  }
-  
-  #username-login, #password-login, #username-signup, #password-signup {
-    width: 30%;
-    padding: 2px;
-    margin: 5px;
-  }
-  
-  .login-signup a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-  }
-/*Partials CSS */ 
-.card {
-    background-color: #fdfcf6;
-    color: #290320;
-    position: relative;
-    margin: 15px;
-    border: 3px solid #290320;
-  
-  }
-  .card-content {
-    color: #290320;
-    padding: 5px;
-  }
-  
-  .card-info {
-    text-align: right;
-    color: #9f3e4d;
-    padding: 5px;
-  }
-  
-  .card a {
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-  }
+}
 
-  .card-title {
-    background-color: #290320;
-    color: #fdfcf6;
-    padding: 5px;
-  }
-  
-  .card-comment-title {
-    background-color: #9f3e4d;
-    color: #fdfcf6;
-    padding: 5px;
-  }
-  
-/*post buttons*/
-  
-.new-post {
-    background-color: #9f3e4d;
-    color: #fdfcf6;
-    margin: 15px;
-    text-align: center;
-    border: solid #290320;
-  }
- 
-  .btn-new-post {
-    background-color: #290320;
-    padding: 10px;
-    font-size: 20px;
-  }
-  
-  .btn-new-post a {
-    color:  #fdfcf6;
-  }
-
-#content-newcomment, #title-newpost, #content-newpost, #title-updatepost, #content-updatepost {
-    padding: 2px;
-    margin: 5px;
-    width: 90%;
-  }
-  
-  .btn-submit {
-    margin: 5px;
-    font-size: 14px;
-  }
-  
-  .new-post-btn-section {
-    text-align: center;
-  }
- 
+.card-head {
+    background-color: #004119;
+    color: #ebe6c9;
+    font-family: 'Sono', sans-serif;
+    margin: auto;
+}

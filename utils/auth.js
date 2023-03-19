@@ -1,12 +1,9 @@
 const withAuth = (req, res, next) => {
-    // user to login page if not already logged in
-    if (!req.session.loggedIn) {
+  if (!req.session.logged_in) {
       res.redirect('/login');
-      // user already logged in, proceed to home panel
-    } else {
+  } else {
       next();
-    }
-  };
-  
-  module.exports = withAuth;
-  
+  }
+};
+
+module.exports = withAuth;
