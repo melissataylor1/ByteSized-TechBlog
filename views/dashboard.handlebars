@@ -1,24 +1,31 @@
-{{#if posts.length}}
+<h1>Welcome to your Dashboard, {{username}}!</h1>
+{{#if blogs.length}}
 <section>
-  <h2>Your Posts</h2>
-  <ol>
-    {{#each posts as |post|}}
-    <ul>
-      <article class="post">
-    <div class="title">
-       <a href="/post/{{id}}">{{title}}</a>
-    </div>
-    <div class="meta">
-        <strong>Posted by {{user.username}} on {{format_date created_at}}</strong>
-    </div>
-    </article>
-      <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit</a>
-    </ul>
-    {{/each}}
-  </ol>
-</section>
-{{/if}}
+  <div class="blog-list">
+    <h3> Your Posts</h3>
 
-<div>
-    <button type="submit"><a href="/dashboard/newpost" class="create-btn">New Post</a></button>
-</div>
+    {{#each blogs as |blog|}}
+    <div class="blog">
+      <h3><a href="/api/blogs/{{blog.id}}">{{blog.title}}</a></h3>
+      <button class="deleteBtn" data-id="{{blog.id}}">Delete?</button>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+
+  <h3>Create a New Blog:</h3>
+
+  <form id="blogForm">
+    <div class="form-group">
+      <input class="form-input" type="text" id="blog-title" name="blog-title" placeholder="Blog Title" />
+    </div>
+
+    <div class="form-group">
+      <textarea class="form-input" id="blog-content" name="blog-content" placeholder="Blog Content"></textarea>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Create</button>
+    </div>
+  </form>
+
+  <script src="/js/dashboard.js"></script>
