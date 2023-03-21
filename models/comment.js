@@ -18,11 +18,11 @@ Comment.init(
                 len: [1]
             }
         },
-        created_at: {
+        date_created: {
             type: DataTypes.DATE,
             allowNull: false,
             defaultValue: DataTypes.NOW,
-        },
+          },
         user_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -31,12 +31,12 @@ Comment.init(
                 key: 'id'
             }
         },
-        post_id: {
+        blog_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
-                model: 'post',
-                key: 'id'
+              model: 'blog',
+              key: 'id'
             }
         }
     },
