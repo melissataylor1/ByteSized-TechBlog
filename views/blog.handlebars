@@ -2,36 +2,29 @@
 <p>{{content}}</p>
 <p>Created by: {{user.username}} on {{date_created}}</p>
 
-<a href="/dashboard">Back To Dashboard</a>
-<h2>
-  Edit Post
-</h2>
-<form class="edit-post-form">
-  <div>
-    <input name="post-title" type="text" size="60" value="{{post.title}}" />
+
+{{#if loggedIn}}
+<form id="commentForm" class="new-comment-form" data-blogid={{id}}>
+  <div class="textAreaCont p-2">
+    <textarea id='comment_text' name="comment-body" placeholder="Enter a comment here..." cols="30" rows="2"></textarea>
   </div>
-  <div>
-    <textarea name="post-text" type="text">{{post.post_text}}</textarea>
-  </div>
-  <div>
-    <button type="submit">Save Post</button>
-    <button type="button" class="delete-post-btn">Delete Post</button>
+  <div class="btnComment p-2">
+    <button class="button btn btn-success" type="submit">Add Comment</button>
   </div>
 </form>
-</article>
+{{/if}}
+<h3>Comments:</h3>
+{{#each comments}}
+<div class="commentCont">
+  <p class="commentText">{{comment_text}}</p>
+  <p class="commentOwner"><span>~</span>Created by {{user.username}} on {{date_created}}<span>~</span></p>
+  {{#if ../loggedIn}}
+  <button class="commentDeleteBtn" comment-id="{{id}}">Delete</button>
+  {{else}}
+  <hr>
+  {{/if}}
+</div>
+<hr>
+{{/each}}
 
-<form class="comment-form">
-  <div>
-    <textarea name="comment-body"></textarea>
-  </div>
-
-  <div>
-    <button type="submit">Add Comment</button>
-  </div>
-</form>
-
-{{> comments post.comments}}
-
-<script src="/js/editPost.js"></script>
-<script src="/js/deletePost.js"></script>
 <script src="/js/comment.js"></script>
