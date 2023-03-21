@@ -1,120 +1,76 @@
 const router = require('express').Router();
-const { Post, User, Comment } = require('../../models');
-const withAuth = require('../../utils/auth');
-const sequelize = require('../../config/connection');
-
-router.get('/', (req, res) => {
-    Post.findAll({
-        attributes: ['id', 'post_text', 'title', 'created_at'],
-        
-        include: [
-            {
-                model: Comment,
-                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-                include: {
-                    model: User,
-                    attributes: ['username']
-                }
-            },
-            {
-                model: User,
-                attributes: ['username']
-            },
-        ]
-    })
-    .then(postData => res.json(postData))
+const { Blog, User, Comment } = require('../../models');
+//GET route for finding all blog entries 
+router.get('/', async (req, res) => {
+    Blog.findAll({})
+    .then(blogData => res.json(blogData))
     .catch(err => {
         console.log(err);
         res.status(500).json(err);
     });
 });
+//an HTTP GET request for a specific blog post
+//id of blog post passed in as parameter to query the db for the blog post
+router.get('/:id', async (req, res) => {
+    try {
+		const blogData = await Blog.findByPk(req.params.id, {
+			include: [
+				{
+					model: User,
+					attributes: ['username'],
+				}, {
+					model: Comment,
+					include: [
+						User
+					]
+				}
+			],
+		});
+		const blog = blogData.get({
+			plain: true
+		});
 
-router.get('/:id', (req, res) => {
-    Post.findOne({
-        where: {
-            id: req.params.id
-        },
-        attributes: ['id', 'post_text', 'title', 'created_at'],
-        include: [
-            {
-                model: User,
-                attributes: ['username']
-            },
-            {
-                model: Comment,
-                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-                include: {
-                    model: User,
-                    attributes: ['username']
-                }
-            }
-        ]
-    })
-    .then(postData => {
-        if (!postData) {
-            res.status(404).json({ message: 'No post found' });
-            return;
-        }
-        res.json(postData);
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+		res.render('blog', {
+			...blog,
+			loggedIn: req.session.loggedIn
+		});
+	} catch (err) {
+		res.status(500).json(err);
+	}
 });
-
-router.put('/:id', withAuth, (req, res) => {
-    Post.update({
-        title: req.body.title,
-        post_text: req.body.post_text
-    },
-    {
-        where: {
-            id: req.params.id
-        }
-    })
-    .then(postData => {
-        if (!postData) {
-            res.status(404).json({ message: 'No post found' });
-            return;
-        }
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+//POST route for creating new blog
+router.post('/', async (req, res) => {
+    try {
+        const newBlog = await Blog.create({
+          ...req.body,
+          user_id: req.session.user_id,
+        });
+    
+        res.status(200).json(newBlog);
+      } catch (err) {
+        res.status(400).json(err);
+      }
 });
-
-router.post('/', withAuth, (req, res) => {
-    Post.create({
-        title: req.body.title,
-        post_text: req.body.post_text,
-        user_id: req.session.user_id
-    })
-    .then(postData => res.json(postData))
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
-});
-
-router.delete('/:id', withAuth, (req, res) => {
-    Post.destroy({
-        where: {
-            id: req.params.id
+//DELETE route for deleting posts
+router.delete('/:id', async (req, res) => {
+    try {
+        const blogData = await Blog.destroy({
+          where: {
+            id: req.params.id,
+            user_id: req.session.user_id,
+          },
+        });
+    
+        if (!blogData) {
+          res.status(404).json({ message: '404 BLOG NOT FOUND!!!!' });
+          return;
         }
-    })
-    .then(postData => {
-        if (!postData) {
-            res.status(404).json({ message: 'No post found' });
-            return;
-        }
-        res.json(postData);
-    })
-    .catch(err => {
-        console.log(err);
+    
+        res.status(200).json(blogData);
+      } catch (err) {
         res.status(500).json(err);
+      }
     });
-});
+    
 
 module.exports = router;
