@@ -21,10 +21,10 @@ commentForm.addEventListener("submit", e=> {
     }).then (res=>{
         if(res.ok){
             console.log(res)
-            alert("comment added!")
+            alert("Comment successfully posted")
             location.reload()
         } else {
-            alert("error posting comment")
+            alert("Couldn't post comment. Try again ")
         }
     })
 }) 
@@ -33,7 +33,7 @@ commentForm.addEventListener("submit", e=> {
 const deleteBtns = document.querySelectorAll(".commentDeleteBtn")
 deleteBtns.forEach(delBtn=>{
     delBtn.addEventListener("click",e=>{
-        console.log("button clicked")
+        console.log("Delete Button working")
         const commentId = e.target.getAttribute("comment-id")
         console.log(commentId);
         fetch(`/api/comments/${commentId}`,{
@@ -42,7 +42,7 @@ deleteBtns.forEach(delBtn=>{
             if(res.ok){
                 location.reload();
             } else {
-                alert("error deleting comment")
+                alert("Couldn't delete comment. Try again ")
             }
         })
     })

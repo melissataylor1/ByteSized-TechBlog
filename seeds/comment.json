@@ -1,20 +1,17 @@
 [
   {
-      "id": 1,
-      "comment_text": "Same!",
-      "post_id": 1,
+      "blog_id": 1,
+      "comment_text": "Same! Thanks for sharing",
       "user_id": 3
   },
   {
-      "id": 2,
-      "comment_text": "True",
-      "post_id": 2,
+      "blog_id": 2,
+      "comment_text": "True. I think most people would agree",
       "user_id": 1
   },
   {
-      "id": 3,
-      "comment_text": "Idk about that",
-      "post_id": 3,
+      "blog_id": 3,
+      "comment_text": "Idk about that...",
       "user_id": 2
   }
 ]
