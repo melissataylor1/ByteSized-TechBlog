@@ -11,6 +11,26 @@ commentForm.addEventListener("submit", e=> {
         comment_text:comment_text
     }
 
+    console.log(commentObj)
+    fetch("/api/comments",{
+        method:"POST",
+        body:JSON.stringify(commentObj),
+        headers:{
+            "Content-Type":"application/json"
+        }
+    }).then (res=>{
+        if(res.ok){
+            console.log(res)
+            alert("comment added!")
+            location.reload()
+        } else {
+            alert("error posting comment")
+        }
+    })
+}) 
+
+
+
 
   if (comment_text) {
       const response = await fetch(`/api/comments`, {

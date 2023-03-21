@@ -13,6 +13,24 @@ blogForm.addEventListener("submit", e=> {
     
 
 
+    console.log(blogObj)
+    fetch("/api/blogs",{
+        method:"POST",
+        body:JSON.stringify(blogObj),
+        headers:{
+            "Content-Type":"application/json"
+        }
+    }).then (res=>{
+        if(res.ok){
+            console.log(res)
+            alert("blog added!")
+            location.reload()
+        } else {
+            alert("error posting blog")
+        }
+    })
+}) 
+
 
   const response = await fetch(`/api/blogs`, {
       method: 'POST',
