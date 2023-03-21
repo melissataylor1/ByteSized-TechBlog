@@ -1,14 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Sono:wght@400;500;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;400&display=swap");
 *{
-    font-family: 'Sono', sans-serif;
+    font-family: 'IBM Plex Sans', sans-serif;
 }
 header {
-    border-bottom: 3px solid #1d2c00;
+    border-bottom: 3px solid #ff2ec0;
     text-align: center;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #004119;
+    background-color: #000841;
     color: #ebe6c9;
     padding: 15px;
     flex-wrap: wrap;
@@ -27,7 +27,7 @@ header {
 }
 
 .card-head {
-    background-color: #004119;
+    background-color: #001641;
     color: #ebe6c9;
     font-family: 'Sono', sans-serif;
     margin: auto;
