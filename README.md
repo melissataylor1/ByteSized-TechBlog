@@ -15,6 +15,8 @@ SO THAT I can publish articles, blog posts, and my thoughts and opinions
 
 ## Link to App
 
+https://bytesizedtechblog.herokuapp.com/
+
 ## Screenshot of App
 
 ## Instructions for Use
@@ -33,6 +35,6 @@ MIT license.
 
 meltee@live.com
 
-## WalkThrough Video
+## Credits
 
-https://drive.google.com/file/d/1938obIzPd5dHvJ77vQdbWN1Q8zYxMnDs/view
+Primary Tutor: Martin Gulberg
