@@ -32,3 +32,7 @@ header {
     font-family: 'Sono', sans-serif;
     margin: auto;
 }
+nav {
+    display: block;
+    color:#004119;
+}

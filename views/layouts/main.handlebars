@@ -7,11 +7,21 @@
   <title>Byte Sized</title>
   <h2>A tech blog.</h2>
   <link rel="stylesheet" href="/css/style.css">
-
+<style>
+  .homepage {
+    color: #004119;
+  }
+    .btn {
+    color: #004119;
+  }
+    #logout {
+    color: #004119;
+  }
+</style>
 </head>
 
 <body>
-      <nav>
+      <nav class="navigation">
                 {{#if loggedIn}}
                 <a href="/" class="homepage">Home</a>
                 <a href="/dashboard">Dashboard</a>
