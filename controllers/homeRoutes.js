@@ -1,7 +1,8 @@
-const router = require('express').Router();
-const { Post, User, Comment } = require('../models');
-const sequelize = require('../config/connection');
+const express = require('express');
+const router = express.Router();
+const { Blog, User, Comment } = require('../models');
 
+// GET route for homepage
 router.get('/', (req, res) => {
     console.log(req.session);
 

@@ -1,4 +1,3 @@
-const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
@@ -10,18 +9,23 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-
-const hbs = exphbs.create({helpers});
-
+//cookie data
 const sess = {
-    secret: "super secret secret",
-    cookie: {},
+    secret: process.env.SESSION_SECRET,
+    cookie: {
+      maxAge:1000*60*60*2
+    },
     resave: false,
     saveUninitialized: true,
     store: new SequelizeStore({
-        db: sequelize
+      db: sequelize
     })
 };
+//public as static directory, acessed fro mweb server
+app.use(express.static('public'))
+//handlebars engine created 
+const hbs = exphbs.create({});
+
 
 app.use(session(sess));
 
@@ -30,7 +34,7 @@ app.set('view engine', 'handlebars');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
+
 
 
 app.use(routes);
