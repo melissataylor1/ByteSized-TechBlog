@@ -16,38 +16,29 @@ router.get('/', async (req, res) => {
 
 //GET single user
 router.get('/:id', (req, res) => {
-    User.findOnebyPk(req.params.id, {
+    User.findbyPk(req.params.id, {
         include: [Blog]
-    }
-        },
-        include: [
-            {
-                model: Post,
-                attributes: ['id', 'title', 'post_text', 'created_at']
-            },
-            {
-                model: Comment, 
-                attributes: ['id', 'comment_text', 'created_at'],
-                include: {
-                    model: Post,
-                    attributes: ['title']
-                }
-            }
-        ]
+    }).then(user => {
+        const userHbsData = user.get({ plain: true });
+        console.log(user);
+        console.log("==============")
+        console.log(userHbsData)
+        res.render("user", userHbsData)
+      })
+})
+router.get('/search/:username', (req, res) => {
+    User.findOne({
+      where: { username: req.params.username },
+      include: [Blog]
+    }).then(user => {
+      const userNameHbsData = user.get({ plain: true });
+      console.log(user);
+      console.log("==============")
+      console.log(userNameHbsData)
+      res.render("user", userNameHbsData)
     })
-    .then(userData => {
-        if (!userData) {
-            res.status(404).json({ message: 'Can not find user'});
-            return;
-        }
-        res.json(userData);
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
-});
-
+  })
+/*
 //UPDATE user
 router.put('/:id', withAuth, (req, res) => {
     User.update(req.body, {
@@ -67,53 +58,52 @@ router.put('/:id', withAuth, (req, res) => {
         console.log(err);
         res.status(500).json(err);
     });
-});
+});*/
 
 //CREATE user
-router.post('/', (req, res) => {
-    User.create({
-        username: req.body.username,
-        email: req.body.email,
-        password: req.body.password
-    })
-    .then(userData => {
-        req.session.save(() => {
-            req.session.user_id = userData.id;
-            req.session.username = userData.username;
-            req.session.loggedIn = true;
-
-            res.json(userData);
-        });
-    });
-});
+router.post('/', async (req, res) => {
+    try {
+      const userData = await User.create(req.body);
+  
+      req.session.save(() => {
+        req.session.user_id = userData.id;
+        req.session.loggedIn = true;
+  
+        res.status(200).json(userData);
+      });
+    } catch (err) {
+      res.status(400).json(err);
+    }
+  });
 
 //LOGIN user
-router.post('/login', (req, res) => {
-    User.findOne({
-        where: {
-            email: req.body.email
+router.post('/login', async (req, res) => {
+    try {
+        const dbUserData = await User.findOne({ where: { username: req.body.username } })
+    
+        if (!dbUserData) {
+          res.status(400).json({ message: 'Invalid username or password.' })
+          return;
         }
-    })
-    .then(userData => {
-        if (!userData) {
-            res.status(400).json({ message: 'No user with this email' });
-            return;
-        }
-        const validPassword = userData.checkPassword(req.body.password);
+    
+        const validPassword = await dbUserData.checkPassword(req.body.password)
+    
         if (!validPassword) {
-            res.status(400).json({ message: 'Incorrect email or password' });
-            return;
+          res.status(400).json({ message: 'Invalid username or password.' })
+          return;
         }
+     
         req.session.save(() => {
-            req.session.user_id = userData.id;
-            req.session.username = userData.username;
+            req.session.user_id = dbUserData.id
             req.session.loggedIn = true;
+            req.session.cookie
+            res.status(200).json({ user: userData, message: 'Logged In' });
 
-            res.json({ user: userData, message: 'Logged In' });
-
-        });
-    });
-});
+        })
+    } catch (err) {
+        res.status(400).json(err)
+      }
+})
 
 //LOGOUT user
 router.post('/logout', withAuth, (req, res) => {
