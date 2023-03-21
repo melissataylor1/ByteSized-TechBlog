@@ -1,17 +1,22 @@
-async function commentFormHandler(event) {
-  event.preventDefault();
+//adding comment to blog
+const commentForm=document.querySelector('#commentForm');
+commentForm.addEventListener("submit", e=> {
+    e.preventDefault();
+    console.log(`Prevented Default`)
+    const comment_text= document.querySelector('#comment_text').value
+    const blog_id=document.querySelector('.new-comment-form').dataset.blogid
 
-  const comment_text = document.querySelector('#comment-txt').value.trim();
+    const commentObj = {
+        blog_id:blog_id,
+        comment_text:comment_text
+    }
 
-  const post_id = window.location.toString().split('/')[
-      window.location.toString().split('/').length - 1
-  ];
 
   if (comment_text) {
       const response = await fetch(`/api/comments`, {
           method: 'POST',
           body: JSON.stringify({
-              post_id,
+              blog_id,
               comment_text
           }),
           headers: {
