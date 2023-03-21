@@ -1,8 +1,9 @@
-<ol class="post-list">
-
-{{#each posts as |post|}}
-  <ul>
-      {{> posts post }}
-  </ul>
+<h1>Byte-Sized Thoughts </h1>
+<h3>See what everyone's saying ⬇️</h3>
+{{#each blogs as |blog|}}
+<div class="blogPost">
+  <h2> <a href="/api/blogs/{{id}}">{{title}}</a> </h2>
+  <p> Created on: {{date_created}}</p>
+</div>
+<hr>
 {{/each}}
-</ol>

@@ -26,11 +26,11 @@
           </div>
         </li>
         <li>
-          <div id="logBtn">
+          <div id="logoutBtn">
             {{#if loggedIn}}
-            <button type="button" id="logoutBtn">Logout</button>
+            <button type="button" id="logout-Btn">Logout</button>
             {{else}}
-            <a href="/login">Login/Sign Up</a>
+            <a href="/login" class="loginBtn">Login/Sign Up</a>
             {{/if}}
           </div>
         </li>
@@ -38,12 +38,10 @@
     </nav>
   </header>
 
-
   <main>
-    <div class="main-section">
-      {{{body}}}
-    </div>
+    {{{body}}}
   </main>
+
   <script src="/js/logout.js"></script>
 </body>
 
