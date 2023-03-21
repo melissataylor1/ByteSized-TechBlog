@@ -5,52 +5,46 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Byte Sized</title>
-  <h2>A tech blog.</h2>
-  <link rel="stylesheet" href="/css/style.css">
-<style>
-  nav, header, h2{
-    text-align: center;
-  }
-  .homepage {
-    color: #190041;
-  }
-    .btn {
-    color: #410011;
-  }
-    #logout {
-    color: #000841;
-  }
-h1 {
-  text-align: center;
-}
-</style>
+  <link rel="stylesheet" href="/css/style.css" />
 </head>
 
 <body>
-      <nav class="navigation">
-                {{#if loggedIn}}
-                <a href="/" class="homepage">Home</a>
-                <a href="/dashboard">Dashboard</a>
-                <button id="logout" class="btn">Log Out</button>
-                {{else}}
-                <a href="/" class="homepage">Home</a>
-                <a href="/login" class="homepage">Login</a>
-                {{/if}}
-            </nav>
-
   <header>
     <h1>Byte Sized Tech Blog</h1>
+    <nav>
+      <ul>
+        <li><a href="/" class="homepage">
+            <div>Home</div>
+          </a></li>
+        <li>
+          <div id="dashboard">
+            {{#if loggedIn}}
+            <a href="/dashboard">Dashboard</a>
+            {{else}}
+            <a href="/login">Dashboard</a>
+            {{/if}}
+          </div>
+        </li>
+        <li>
+          <div id="logBtn">
+            {{#if loggedIn}}
+            <button type="button" id="logoutBtn">Logout</button>
+            {{else}}
+            <a href="/login">Login/Sign Up</a>
+            {{/if}}
+          </div>
+        </li>
+      </ul>
+    </nav>
   </header>
-  
+
+
   <main>
     <div class="main-section">
       {{{body}}}
     </div>
   </main>
-  
-  {{#if loggedIn}}
-  {{!-- When loggedin, show logout button --}}
   <script src="/js/logout.js"></script>
-  {{/if}}
 </body>
+
 </html>
