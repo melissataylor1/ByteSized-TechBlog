@@ -1,30 +1,40 @@
-<h2>{{title}}</h2>
-<p>{{content}}</p>
-<p>Created by: {{user.username}} on {{date_created}}</p>
+<h2 class="text-3xl text-sky-400 mt-20 text-center">{{title}}</h2>
+<p class="text-md text-sky-200 mt-10 text-center">{{content}}</p>
+<p class="text-sm text-slate-400 my-10 text-center">Created by: {{user.username}} on {{date_created}}</p>
 
 
 {{#if loggedIn}}
-<form id="commentForm" class="new-comment-form" data-blogid={{id}}>
-  <div class="textAreaCont p-2">
+<form id="commentForm" class="new-comment-form w-2/5 mx-auto text-center" data-blogid={{id}}>
+  <div class="textAreaCont p-2 text-center">
     <textarea id='comment_text' name="comment-body" placeholder="Enter a comment here..." cols="30" rows="2"></textarea>
   </div>
   <div class="btnComment p-2">
-    <button class="button btn btn-success" type="submit">Add Comment</button>
+    <button
+      class="button btn w-1/5  bg-blue-500 text-sm hover:bg-blue-400 text-white py-2 px-1 border-b-4 border-blue-700 hover:border-blue-500 rounded w-1/3"
+      type="submit">Add Comment</button>
   </div>
 </form>
 {{/if}}
-<h3>Comments:</h3>
-{{#each comments}}
-<div class="commentCont">
-  <p class="commentText">{{comment_text}}</p>
-  <p class="commentOwner"><span>~</span>Created by {{user.username}} on {{date_created}}<span>~</span></p>
-  {{#if ../loggedIn}}
-  <button class="commentDeleteBtn" comment-id="{{id}}">Delete</button>
-  {{else}}
-  <hr>
-  {{/if}}
-</div>
-<hr>
-{{/each}}
 
+<div class="grid grid-cols-1 mx-10">
+  <div class="col-span-3">
+    <h2 class="text-lg text-slate-300 mt-5 mb-2">Comments:</h2>
+    {{#each comments}}
+    <div class="commentCont mt-5">
+      <p class="commentText text-sky-200">{{comment_text}}</p>
+      <p class="commentOwner text-xs text-slate-400 my-2"><span>~</span>Created by {{user.username}} on
+        {{date_created}}<span>~</span></p>
+      {{#if ../loggedIn}}
+      <button
+        class="commentDeleteBtn text-xs w-1/6 text-white py-2 border-2 border-blue-700 hover:border-blue-500 rounded my-5"
+        comment-id="{{id}}">Delete</button>
+      {{else}}
+
+      {{/if}}
+    </div>
+
+
+    {{/each}}
+  </div>
+</div>
 <script src="/js/comment.js"></script>

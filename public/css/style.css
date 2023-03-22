@@ -1,51 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Sono:wght@400&display=swap');
 *{
-    font-family: 'IBM Plex Sans', sans-serif;
-}
-header {
-    border-bottom: 3px solid #ff2ec0;
-    text-align: center;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #000841;
-    color: #ebe6c9;
-    padding: 15px;
-    flex-wrap: wrap;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    width: 100%;
 }
 
-h1 {
-    margin-left: auto;
-    margin-right: auto;
-    font-family: 'Share Tech Mono', monospace;
+h1, h4 {
+    font-family: 'Share Tech Mono', sans-serif;
 }
 
-.homepage {
-    color: #ebe6c9;
-}
-
-.container {
-    width: 35%;
-    border: 3px solid #271d0e;
-    border-radius: 25px;
-    padding: 10px;
-    margin: 20px;
-}
-
-.card-head {
-    background-color: #001641;
-    color: #ebe6c9;
+ul, h2 {
     font-family: 'Sono', sans-serif;
-    margin: auto;
-}
-nav {
-    display: block;
-    color:#004119;
-}
+ }
 
-.main-section {
-    width: 60%;
-}
+ h3, p {
+    font-family: 'IBM Plex Sans', sans-serif;
+ }
