@@ -19,6 +19,10 @@ https://bytesizedtechblog.herokuapp.com/
 
 ## Screenshot of App
 
+![Blog Post](./assets/blogpost.png)
+![Create Post](./assets/create.png)
+![Home Page](./assets/home.png)
+
 ## Instructions for Use
 
 ### Installation
