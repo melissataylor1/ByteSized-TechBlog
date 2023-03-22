@@ -1,6 +1,6 @@
-const User = require('./User');
+const User = require('./user');
 const Blog = require('./Blog');
-const Comment = require('./Comment');
+const Comment = require('./comment');
 
 //CASCADE = any records that have a foreign key referencing the deleted record will also be deleted
 User.hasMany(Blog, {
